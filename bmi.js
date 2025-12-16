@@ -12,7 +12,7 @@ app.use(express.static(__dirname));
 
 // show main page
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "index.html"));
+  res.sendFile(path.join(__dirname, "bmi.html"));
 });
 
 // handle BMI calculation
@@ -46,7 +46,7 @@ app.post("/calculate-bmi", (req, res) => {
 
   // redirect with query params
   res.redirect(
-    `/result.html?bmi=${bmiValue}&category=${category}&class=${className}`
+    `/bmiresult.html?bmi=${bmiValue}&category=${category}&class=${className}`
   );
 });
 
