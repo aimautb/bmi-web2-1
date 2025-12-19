@@ -1,21 +1,20 @@
 const express = require("express");
-const path = require("path");
+
 
 const app = express();
 const PORT = 3000;
 
-// parse form data
 app.use(express.urlencoded({ extended: true }));
 
-// allow static files (html, css)
+
 app.use(express.static(__dirname));
 
-// show main page
+
 app.get("/", (req, res) => {
 res.sendFile("bmi.html", { root: __dirname });
 });
 
-// handle BMI calculation
+
 app.post("/calculate-bmi", (req, res) => {
   const weight = parseFloat(req.body.weight);
   const height = parseFloat(req.body.height);
@@ -44,7 +43,7 @@ app.post("/calculate-bmi", (req, res) => {
     className = "obese";
   }
 
-  // redirect to result page
+  
   res.redirect(
     `/bmiresult.html?bmi=${bmiValue}&category=${category}&class=${className}`
   );
